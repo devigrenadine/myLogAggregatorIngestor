@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>thrift-generator</artifactId>
+    <groupId>org.mine</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+	
+	<name>thrift-generator</name>
+    <description>Generator for thrift classes</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.9.3</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+           <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        	<configuration>
+         		 <source>1.8</source>
+          		<target>1.8</target>
+          		<verbose>true</verbose>
+		  		<fork>true</fork>
+		 		 <executable>C:\Program Files\Java\jdk1.8.0_181\bin\javac</executable>
+        	</configuration>
+        	</plugin>
+            <plugin>
+                <groupId>org.apache.thrift.tools</groupId>
+                <artifactId>maven-thrift-plugin</artifactId>
+                <version>0.1.11</version>
+                <configuration>
+                    <thriftExecutable>c:\dev\tools\apache-thrift\thrift-0.9.3.exe</thriftExecutable>
+                    <thriftSourceRoot>src/main/resources</thriftSourceRoot>
+                    <outputDirectory>src/main/java/com</outputDirectory>
+                </configuration>
+                <executions> 
+                     <execution> 
+                       <id>thrift-sources</id> 
+                         <phase>generate-sources</phase> 
+                       <goals> 
+                             <goal>compile</goal> 
+                        </goals> 
+                    </execution>
+                   <!--  <execution> -->
+                     <!--    <id>thrift-test-sources</id> -->
+                     <!--    <phase>generate-test-sources</phase> -->
+                     <!--    <goals> -->
+                     <!--        <goal>testCompile</goal> -->
+                     <!--    </goals> -->
+                   <!--  </execution> -->
+                 </executions> 
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
